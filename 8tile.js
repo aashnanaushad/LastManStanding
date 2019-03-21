@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
 
     var board = [0,1,2,3,4,5,6,7,8];
@@ -209,23 +208,19 @@ $(document).ready(function() {
     };
 
     function makeSwap() {
-        console.log("TEST1");
-
         var blankid = parseInt($('.blank').attr('id')[2]);
         var thisid = -1;
         var x = -1;
         var nextMove = open[0].moves[counter];
         for (var i = 0; i < 9; i++) {
             if (board[i] == nextMove) {
-                thisid = document.getElementById('sq' + i).src;
+                thisid = document.getElementById('sq' + i);
                 x = i;
             }
         }
-        var temp = board[x].src;
-        board[x].src = board[blankid].src;
-        console.log(board[x].src);
-        board[blankid].src = temp;
-        console.log(board[blankid].src);
+        var temp = board[x];
+        board[x] = board[blankid];
+        board[blankid] = temp;
         $('.blank').addClass('tile');
         $('.blank').html($(thisid).html());
         $('.blank').removeClass('blank');
